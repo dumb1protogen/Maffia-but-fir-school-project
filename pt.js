@@ -45,3 +45,4 @@ if (a == 4 ) {
     }while (i<20);
     console.log ("test");
     console.log (vet);
+//TO DO switch 
