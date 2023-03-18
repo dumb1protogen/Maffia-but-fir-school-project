@@ -47,7 +47,18 @@ if (a == 4 ) {
     console.log (vet);
 //TO DO switch 
 switch (random role){
-case 4 
+case 4:
 vet = true
-console.log (a)
+console.log (a);
+i++
+return i;
+break;
+case 7:
+break;
+case 999:
+break;
+default 
+console.log (a);
+i++
+return i;
 }
