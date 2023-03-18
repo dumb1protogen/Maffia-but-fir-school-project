@@ -9,13 +9,12 @@ let mayor = 0;
 let gf = 0;
 //
 
-let i = 0;
 let a = 0;
 
 let random_role = function () {
 a = Math.floor(Math.random() * 7) + 1;
 if (a != 4 && a != 7){
-   console.log (a);
+   console.log (i + "" + a);
    i++
    return i;
 }
@@ -23,7 +22,7 @@ if (a == 4 ) {
     if (vet == false){
     vet = true;
     i++
-    console.log (a);
+    console.log (i + "" + a);
     return vet;
     return i;}
     } else if (vet == true){
