@@ -25,7 +25,7 @@ let random_role = function () {
 a = Math.floor(Math.random() * 15) + 1;
 
 if (a != 4 && a != 7 && a != 10 && a != 9){
-    document.writeln (a + "<br>");
+    document.writeln (i + " you are " +  a + "<br>");
    i++
    return i;
 }
@@ -33,7 +33,7 @@ if (a == 4 ) {
     if (vet == false){
     vet = true;
     i++
-    document.writeln (a + "<br>");
+    document.writeln (i + " you are " +  a + "<br>");
     return vet, i;}
     } else {
         random_role;
@@ -42,7 +42,7 @@ if (a == 4 ) {
      if (mayor == false){
         mayor= true;
         i++
-        document.writeln (a + "<br>");
+        document.writeln (i + " you are " +  a + "<br>");
         return mayor, i;} 
     }
     
@@ -57,7 +57,7 @@ if (a == 4 ) {
             gf = true
             i++ 
             mafioso++
-            document.writeln (a + "<br>");
+            document.writeln (i + " you are " +  a + "<br>");
             return gf, i;
         }
         else {
@@ -66,7 +66,7 @@ if (a == 4 ) {
     }
         if (a == 9 ) {
             if (mafioso < 3) {
-                document.writeln (a + "<br>");
+                document.writeln (i + " you are " +  a + "<br>");
                 mafioso++
             return mafioso, i;
             }
