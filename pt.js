@@ -1,74 +1,69 @@
 
 // let randomNumber = Math.floor(Math.random() * 13) + 1;
 
-let vet = false; 
-//4
-
-let mayor = false;
-//7
-let gf = false;
-//10
-let mafioso = 0;
-//10 and 9
-
-let a = 0;
 let i = 1
+let vet = false;  //4
+let mayor = false; //7 
+let gf = false; //10
+let mafioso = 0; //10 9 
 
-let random_role = function () {
+random_role = function () {
+    
+
+
+
 a = Math.floor(Math.random() * 15) + 1;
+   // document.writeln (a + "<-- Real number ----      "); // debug
 
 if (a != 4 && a != 7 && a != 10 && a != 9){
-    document.writeln (a + "<br>");
+    document.writeln (i + " you are " +  a + "<br>");
    i++
-   return i;
+   
 }
-if (a == 4 ) {
-    if (vet == false){
+if (a == 4 && vet == false) {
     vet = true;
+    document.writeln (i + " you are " +  a + "<br>");
     i++
-    document.writeln (a + "<br>");
-    return vet, i;}
     } else {
-        random_role;
+        //document.write ("error<br>");
     } 
-    if (a == 7){
-     if (mayor == false){
-        mayor= true;
+    if (a == 7 && mayor == false){
+        document.writeln (i + " you are " +  a + "<br>");
+        mayor = true;
         i++
-        document.writeln (a + "<br>");
-        return mayor, i;} 
-    }
+      } 
+    
     
     else {
-            random_role
+        //document.write ("error<br>");
         }
     
         
     
-    if (a == 10){
-        if (gf == false){
-            gf = true
+    if (a == 10 && gf == false && mafioso < 3){
+            document.writeln (i + " you are " +  a + "<br>");
+            gf = true;
             i++ 
             mafioso++
-            document.writeln (a + "<br>");
-            return gf, i;
-        }
+           }
+        
         else {
-            random_role
+            //document.write ("error<br>")
         }
-    }
-        if (a == 9 ) {
-            if (mafioso < 3) {
-                document.writeln (a + "<br>");
+    
+        if (a == 9 && mafioso <3 ) {
+            
+                document.writeln (i + " you are " +  a + "<br>");
                 mafioso++
-            return mafioso, i;
+                i++
             }
             else {
-                random_role
+                //document.writeln ("error<br>");
             }
+            
         }
         
-    }
+    
     
    
    
