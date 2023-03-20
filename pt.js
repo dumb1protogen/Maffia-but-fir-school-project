@@ -70,7 +70,7 @@ if (a == 4 && vet == false) {
     
     do{
     random_role();
-    }while (i < 15 + 1);
+    }while (i < 16 + 1);
 
 //document.writeln (i + " you are " + a)
 
