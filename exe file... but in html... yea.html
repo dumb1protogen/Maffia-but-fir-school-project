@@ -19,7 +19,7 @@ random_role = function () {
 
 
 
-a = Math.floor(Math.random() * 15) + 1;
+a = Math.floor(Math.random() * 2) + 1;
    // document.writeln (a + "<-- Real number ----      "); // debug
 
 if (a != 4 && a != 7 && a != 10 && a != 9){
@@ -78,7 +78,7 @@ if (a == 4 && vet == false) {
     do{
     random_role();
     }while (i < 16 + 1);
-
+    text.replace(/1/g, "мирный")
 //document.writeln (i + " you are " + a)
 
     </script>
