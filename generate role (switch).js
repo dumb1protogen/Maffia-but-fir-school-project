@@ -17,7 +17,7 @@ let pool ={
 };
 let counter = 1
 
-while (counter < 15 + 1) {
+while (counter < 16 + 1) {
 
 pool.number = Math.floor(Math.random() * 14) + 1;
 console.log (pool.number + " number"); // debug
