@@ -28,7 +28,7 @@ switch(pool.number)
     case 1: 
     if (pool.Peace < 3)
     {
-        document.writeln ( counter + " " + "вы мирный" + "<br>");
+        document.writeln ( counter + " " + "Вы Мирный" + "<br>");
         pool.Peace++
         counter++
     }
@@ -36,7 +36,7 @@ switch(pool.number)
     case 2:
         if (pool.Shooter < 3) 
         {
-            document.writeln ( counter + " " + "вы стрелок" + "<br>");
+            document.writeln ( counter + " " + "Вы Стрелок" + "<br>");
             pool.Shooter++
             counter++
         }
@@ -44,7 +44,7 @@ switch(pool.number)
         case 3:
             if (pool.Sherif < 3)
             {
-                document.writeln ( counter + " " + "вы шериф" + "<br>");
+                document.writeln ( counter + " " + "Вы Шериф" + "<br>");
                 pool.Sherif++
                 counter++
             }
@@ -53,7 +53,7 @@ switch(pool.number)
         case 4:
             if (pool.Veteran < 1)
             {
-                document.writeln ( counter + " " + "вы ветеран" + "<br>");
+                document.writeln ( counter + " " + "Вы Ветеран" + "<br>");
                 pool.Veteran++
                 counter++
             }
@@ -61,7 +61,7 @@ switch(pool.number)
         case 5:
             if (pool.Doctor < 3)
             {
-                document.writeln ( counter + " " + "вы Доктор" + "<br>");
+                document.writeln ( counter + " " + "Вы Доктор" + "<br>");
                 pool.Doctor++
                 counter++
             }
@@ -69,7 +69,7 @@ switch(pool.number)
         case 6:
             if (pool.Escort < 3)
             {
-                document.writeln ( counter + " " + "вы модель" + "<br>");
+                document.writeln ( counter + " " + "Вы Модель" + "<br>");
                 pool.Escort++
                 counter++
             }
@@ -77,7 +77,7 @@ switch(pool.number)
         case 7:
             if (pool.Mayor < 1)
             {
-                document.writeln ( counter + " " + "вы Мэр" + "<br>");
+                document.writeln ( counter + " " + "Вы Мэр" + "<br>");
                 pool.Mayor++
                 counter++
             }
@@ -85,7 +85,7 @@ switch(pool.number)
         case 8:
             if (pool.Lookout < 3)
             {
-                document.writeln ( counter + " " + "вы Смотритель" + "<br>");
+                document.writeln ( counter + " " + "Вы Смотритель" + "<br>");
                 pool.Lookout++
                 counter++
             }
@@ -93,7 +93,7 @@ switch(pool.number)
         case 9:
             if (pool.Maf < 3)
             {
-                document.writeln ( counter + " " + "вы мафиозник" + "<br>");
+                document.writeln ( counter + " " + "Вы Мафиозник" + "<br>");
                 pool.Maf++
                 counter++
             }
@@ -101,7 +101,7 @@ switch(pool.number)
         case 10:
             if (pool.God_father < 1 && pool.Maf < 3) 
             {
-                document.writeln ( counter + " " + "вы Крестный отец"+ "<br>");
+                document.writeln ( counter + " " + "Вы Крестный отец"+ "<br>");
                 pool.God_father++
                 pool.Maf++
                 counter++
@@ -110,7 +110,7 @@ switch(pool.number)
         case 11:
             if (pool.Sk < 3)
             {
-                document.writeln ( counter + " " + "вы Сириный убийца"+ "<br>");
+                document.writeln ( counter + " " + "Вы Сериный убийца"+ "<br>");
                 pool.Sk++
                 counter++
             }
@@ -118,7 +118,7 @@ switch(pool.number)
          case 12:
             if (pool.Jester < 3)
             {
-                document.writeln ( counter + " " + "вы шут"+ "<br>");
+                document.writeln ( counter + " " + "Вы Шут"+ "<br>");
                 pool.Jester++
                 counter++
             }
@@ -126,7 +126,7 @@ switch(pool.number)
          case 13:
             if (pool.Surv < 3)
             {
-                document.writeln ( counter + " " + "вы выживший "+ "<br>");
+                document.writeln ( counter + " " + "Вы Выживший "+ "<br>");
                 pool.Surv++
                 counter++
             }
@@ -134,7 +134,7 @@ switch(pool.number)
          case 14:
             if (pool.amni < 3)
             {
-                document.writeln ( counter + " " + "вы забытый" + "<br>");
+                document.writeln ( counter + " " + "Вы Забытый" + "<br>");
                 pool.amni++
                 counter++
             }
@@ -148,7 +148,7 @@ switch(pool.number)
 
 if (pool.Maf == 0 )  
 {
-    document.writeln ("НЕТ МАФИИ ДОВАЙ ПО НОВОЙ МИЩА ВСЮ ХУЙНЯ")
+    document.writeln ("НЕТ МАФИИ ДОВАЙ ПО НОВОЙ МИЩА ВСЕ ХУЙНЯ")
 }
 
 document.writeln (" " + "<br>");
