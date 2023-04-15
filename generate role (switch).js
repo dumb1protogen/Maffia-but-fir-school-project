@@ -99,7 +99,7 @@ switch(pool.number)
             }
             break
         case 10:
-            if (pool.God_father < 1 || pool.Maf < 3) 
+            if (pool.God_father < 1 && pool.Maf < 3) 
             {
                 document.writeln ( counter + " " + "вы Крестный отец"+ "<br>");
                 pool.God_father++
