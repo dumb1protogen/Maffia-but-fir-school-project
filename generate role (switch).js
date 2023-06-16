@@ -1,6 +1,6 @@
 let Setting = {
     IsVillagerInGame:  true,
-    IsNitralsInGame: true,
+    IsNitralsInGame: false,
     IsMyOwnRoleeAdded: false,
 }
 let Kill = 0
@@ -43,7 +43,7 @@ switch(pool.number)
     }
     break; 
     case 2:
-        if (pool.Shooter < 3) 
+        if (pool.Shooter < 3 && Setting.IsMyOwnRoleeAdded == true) 
         {
             document.writeln ( counter + " " + "Вы Стрелок" + "<br>");
             pool.Shooter++
