@@ -1,3 +1,9 @@
+let Setting = {
+    IsVillagerInGame:  true,
+    IsNitralsInGame: true,
+    IsMyOwnRoleeAdded: false,
+}
+let Kill = 0
 let pool ={
     Vilager: 0,
     Neitrals: 0,
@@ -19,7 +25,7 @@ let pool ={
 };
 let counter = 1
 
-while (counter < 6 + 1) {
+while (counter < 5 + 1) {
 
 pool.number = Math.floor(Math.random() * 14) + 1;
 console.log (pool.number + " number"); // debug
@@ -28,7 +34,7 @@ switch(pool.number)
 
 {
     case 1: 
-    if (pool.Peace < 3)
+    if (pool.Peace < 3 && Setting.IsVillagerInGame == true)
     {
         document.writeln ( counter + " " + "Вы Мирный" + "<br>");
         pool.Peace++
@@ -43,6 +49,7 @@ switch(pool.number)
             pool.Shooter++
             pool.Vilager++
             counter++
+            Kill++
         }
         break;
         case 3:
@@ -56,12 +63,13 @@ switch(pool.number)
             break
 
         case 4:
-            if (pool.Veteran < 1)
+            if (pool.Veteran < 1 && Setting.IsMyOwnRoleeAdded == true)
             {
                 document.writeln ( counter + " " + "Вы Ветеран" + "<br>");
                 pool.Veteran++
                 pool.Vilager++
                 counter++
+                Kill++
             }
             break
         case 5:
@@ -83,7 +91,7 @@ switch(pool.number)
             }
             break
         case 7:
-            if (pool.Mayor < 1)
+            if (pool.Mayor < 1 && Setting.IsMyOwnRoleeAdded == true)
             {
                 document.writeln ( counter + " " + "Вы Мэр" + "<br>");
                 pool.Mayor++
@@ -92,7 +100,7 @@ switch(pool.number)
             }
             break
         case 8:
-            if (pool.Lookout < 3)
+            if (pool.Lookout < 3 && Setting.IsMyOwnRoleeAdded == true)
             {
                 document.writeln ( counter + " " + "Вы Смотритель" + "<br>");
                 pool.Lookout++
@@ -106,28 +114,31 @@ switch(pool.number)
                 document.writeln ( counter + " " + "Вы Мафиозник" + "<br>");
                 pool.Maf++
                 counter++
+                Kill++
             }
             break
         case 10:
-            if (pool.God_father < 1 && pool.Maf < 3) 
+            if (pool.God_father < 1 && pool.Maf < 3 && Setting.IsMyOwnRoleeAdded == true) 
             {
-                document.writeln ( counter + " " + "Вы Крестный отец"+ "<br>");
+                document.writeln ( counter + " " + "Вы Крестный отец"+ "<br>" );
                 pool.God_father++
                 pool.Maf++
                 counter++
+                Kill++
             }
             break
         case 11:
-            if (pool.Sk < 3)
+            if (pool.Sk < 3 && Setting.IsNitralsInGame == true)
             {
                 document.writeln ( counter + " " + "Вы Сериный убийца"+ "<br>");
                 pool.Sk++
                 pool.Neitrals
                 counter++
+                Kill++
             }
             break
          case 12:
-            if (pool.Jester < 3)
+            if (pool.Jester < 3 && Setting.IsNitralsInGame == true)
             {
                 document.writeln ( counter + " " + "Вы Шут"+ "<br>");
                 pool.Jester++
@@ -136,7 +147,7 @@ switch(pool.number)
             }
             break
          case 13:
-            if (pool.Surv < 3)
+            if (pool.Surv < 3 && Setting.IsNitralsInGame == true)
             {
                 document.writeln ( counter + " " + "Вы Выживший "+ "<br>");
                 pool.Surv++
@@ -145,7 +156,7 @@ switch(pool.number)
             }
             break
          case 14:
-            if (pool.amni < 3)
+            if (pool.amni < 3 && Setting.IsNitralsInGame == true)
             {
                 document.writeln ( counter + " " + "Вы Забытый" + "<br>");
                 pool.amni++
@@ -162,10 +173,11 @@ switch(pool.number)
 
 if (pool.Maf == 0 )  
 {
-    document.writeln ("НЕТ МАФИИ ДОВАЙ ПО НОВОЙ МИЩА ВСЕ ХУЙНЯ")
+    document.writeln ("НЕТ МАФИИ ДАВАЙ ПО НОВОЙ МИЩА ВСЕ ХУЙНЯ");
+    counter = 0;
 }
 document.writeln (" " + "<br>");
-document.writeln ("всего мирных " + " " + pool.Vilager++ + "<br>")
-document.writeln ("всего мафии" + " " + pool.Maf + "<br>")
-document.writeln ("всего нейтралных ролей" + " " + pool.Neitrals + "<br>")
-document.writeln
+document.writeln ("Всего мирных " + " " + pool.Vilager++ + "<br>");
+document.writeln ("Всего мафии" + " " + pool.Maf + "<br>");
+document.writeln ("Всего нейтралных ролей" + " " + pool.Neitrals + "<br>");
+document.writeln ("Всего роллей способных убивать ночью" + " " + Kill );
