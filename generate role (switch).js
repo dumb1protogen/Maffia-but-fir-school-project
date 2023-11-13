@@ -26,7 +26,7 @@ let pool ={
 };
 let counter = 1
 
-while (counter < 5 + 1) {
+while (counter < 10 + 1) {
 
 pool.number = Math.floor(Math.random() * 15) + 1;
 console.log (pool.number + " number"); // debug
