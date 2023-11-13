@@ -1,7 +1,7 @@
 let Setting = {
-    IsVillagerInGame:  true,
+    IsVillagerInGame:  false,
     IsNitralsInGame: false,
-    IsMyOwnRoleeAdded: false,
+    IsMyOwnRoleeAdded: true,
 }
 let Kill = 0
 let pool ={
@@ -22,19 +22,20 @@ let pool ={
     Jester: 0, 
     Surv: 0, 
     amni: 0,
+    Jani: 0,
 };
 let counter = 1
 
-while (counter < 5 + 1) {
+while (counter < 10 + 1) {
 
-pool.number = Math.floor(Math.random() * 14) + 1;
+pool.number = Math.floor(Math.random() * 15) + 1;
 console.log (pool.number + " number"); // debug
 
 switch(pool.number) 
 
 {
     case 1: 
-    if (pool.Peace < 3 && Setting.IsVillagerInGame == true)
+    if (pool.Peace < 5 && Setting.IsVillagerInGame == true)
     {
         document.writeln ( counter + " " + "Вы Мирный" + "<br>");
         pool.Peace++
@@ -43,7 +44,7 @@ switch(pool.number)
     }
     break; 
     case 2:
-        if (pool.Shooter < 3 && Setting.IsMyOwnRoleeAdded == true) 
+        if (pool.Shooter < 1 && Setting.IsMyOwnRoleeAdded == true) 
         {
             document.writeln ( counter + " " + "Вы Стрелок" + "<br>");
             pool.Shooter++
@@ -53,7 +54,7 @@ switch(pool.number)
         }
         break;
         case 3:
-            if (pool.Sherif < 3)
+            if (pool.Sherif < 1)
             {
                 document.writeln ( counter + " " + "Вы Шериф" + "<br>");
                 pool.Sherif++
@@ -73,7 +74,7 @@ switch(pool.number)
             }
             break
         case 5:
-            if (pool.Doctor < 3)
+            if (pool.Doctor < 1)
             {
                 document.writeln ( counter + " " + "Вы Доктор" + "<br>");
                 pool.Doctor++
@@ -82,7 +83,7 @@ switch(pool.number)
             }
             break
         case 6:
-            if (pool.Escort < 3)
+            if (pool.Escort < 1)
             {
                 document.writeln ( counter + " " + "Вы Модель" + "<br>");
                 pool.Escort++
@@ -100,9 +101,9 @@ switch(pool.number)
             }
             break
         case 8:
-            if (pool.Lookout < 3 && Setting.IsMyOwnRoleeAdded == true)
+            if (pool.Lookout < 1 && Setting.IsMyOwnRoleeAdded == true)
             {
-                document.writeln ( counter + " " + "Вы Смотритель" + "<br>");
+                document.writeln ( counter + " " + "Вы Судья" + "<br>");
                 pool.Lookout++
                 pool.Vilager++
                 counter++
@@ -128,7 +129,7 @@ switch(pool.number)
             }
             break
         case 11:
-            if (pool.Sk < 3 && Setting.IsNitralsInGame == true)
+            if (pool.Sk < 1 && Setting.IsNitralsInGame == true)
             {
                 document.writeln ( counter + " " + "Вы Сериный убийца"+ "<br>");
                 pool.Sk++
@@ -138,7 +139,7 @@ switch(pool.number)
             }
             break
          case 12:
-            if (pool.Jester < 3 && Setting.IsNitralsInGame == true)
+            if (pool.Jester < 1 && Setting.IsNitralsInGame == true)
             {
                 document.writeln ( counter + " " + "Вы Шут"+ "<br>");
                 pool.Jester++
@@ -147,7 +148,7 @@ switch(pool.number)
             }
             break
          case 13:
-            if (pool.Surv < 3 && Setting.IsNitralsInGame == true)
+            if (pool.Surv < 1 && Setting.IsNitralsInGame == true)
             {
                 document.writeln ( counter + " " + "Вы Выживший "+ "<br>");
                 pool.Surv++
@@ -156,7 +157,7 @@ switch(pool.number)
             }
             break
          case 14:
-            if (pool.amni < 3 && Setting.IsNitralsInGame == true)
+            if (pool.amni < 1 && Setting.IsNitralsInGame == true)
             {
                 document.writeln ( counter + " " + "Вы Забытый" + "<br>");
                 pool.amni++
@@ -164,6 +165,26 @@ switch(pool.number)
                 counter++
             }
             break
+            case 15:
+                if (pool.Maf >= 1 && Setting.IsMyOwnRoleeAdded == true)
+                { document.writeln (counter + " " + "Вы Уборщик" + "<br>") 
+                counter++
+            }
+                else if (pool.God_father == 0) {
+                    document.writeln ( counter + " " + "Вы Крестный отец"+ "<br>" );
+                pool.God_father++
+                pool.Maf++
+                counter++
+                Kill++
+                }
+                else {
+                document.writeln ( counter + " " + "Вы мафиозник"+ "<br>" );
+                pool.Maf++
+                counter++
+                Kill++
+                }
+                
+                break
 
 }
 
@@ -173,7 +194,7 @@ switch(pool.number)
 
 if (pool.Maf == 0 )  
 {
-    document.writeln ("НЕТ МАФИИ ДАВАЙ ПО НОВОЙ МИЩА ВСЕ ХУЙНЯ");
+    document.writeln ("НЕТ МАФИИ ДАВАЙ ПО НОВОЙ МИЩА");
     counter = 0;
 }
 document.writeln (" " + "<br>");
