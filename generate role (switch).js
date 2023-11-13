@@ -1,6 +1,6 @@
 let Setting = {
-    IsVillagerInGame:  false,
-    IsNitralsInGame: false,
+    IsVillagerInGame:  true,
+    IsNitralsInGame: true,
     IsMyOwnRoleeAdded: true,
 }
 let Kill = 0
@@ -26,7 +26,7 @@ let pool ={
 };
 let counter = 1
 
-while (counter < 10 + 1) {
+while (counter < 5 + 1) {
 
 pool.number = Math.floor(Math.random() * 15) + 1;
 console.log (pool.number + " number"); // debug
@@ -195,8 +195,12 @@ switch(pool.number)
 if (pool.Maf == 0 )  
 {
     document.writeln ("НЕТ МАФИИ ДАВАЙ ПО НОВОЙ МИЩА");
-    counter = 0;
+    location.reload()
 }
+
+
+
+
 document.writeln (" " + "<br>");
 document.writeln ("Всего мирных " + " " + pool.Vilager++ + "<br>");
 document.writeln ("Всего мафии" + " " + pool.Maf + "<br>");
