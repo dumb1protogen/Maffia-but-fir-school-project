@@ -1,5 +1,5 @@
 let Setting = {
-    IsVillagerInGame:  true,
+    IsVillagerInGame:  false,
     IsNitralsInGame: true,
     IsMyOwnRoleeAdded: true,
 }
@@ -10,13 +10,14 @@ let pool ={
     Peace: 0 ,
     Shooter: 0 ,
     number: NaN, 
-    Sherif: 0 ,
+    Sherif: 0,
     Veteran: 0, 
-    Doctor: 0 , 
-    Escort: 0 ,
-    Mayor: 0 , 
-    Lookout:0 ,
-    Maf: 0 , 
+    Doctor: 0, 
+    Escort: 0,
+    Mayor: 0, 
+    Lookout:0,
+    Maf: 0,
+    EvilSide: 0, 
     God_father: 0 ,
     Sk: 0,
     Jester: 0, 
@@ -35,7 +36,7 @@ switch(pool.number)
 
 {
     case 1: 
-    if (pool.Peace < 5 && Setting.IsVillagerInGame == true)
+    if (pool.Peace <= 5 && Setting.IsVillagerInGame == true)
     {
         document.writeln ( counter + " " + "Вы Мирный" + "<br>");
         pool.Peace++
@@ -110,22 +111,24 @@ switch(pool.number)
             }
             break
         case 9:
-            if (pool.Maf < 3)
+            if (pool.Maf < 1 && pool.EvilSide < 3)
             {
                 document.writeln ( counter + " " + "Вы Мафиозник" + "<br>");
                 pool.Maf++
                 counter++
                 Kill++
+                pool.EvilSide++
             }
             break
         case 10:
-            if (pool.God_father < 1 && pool.Maf < 3 && Setting.IsMyOwnRoleeAdded == true) 
+            if (pool.God_father < 1 && pool.EvilSide < 3 && Setting.IsMyOwnRoleeAdded == true) 
             {
                 document.writeln ( counter + " " + "Вы Крестный отец"+ "<br>" );
                 pool.God_father++
                 pool.Maf++
                 counter++
                 Kill++
+                pool.EvilSide++
             }
             break
         case 11:
@@ -166,23 +169,29 @@ switch(pool.number)
             }
             break
             case 15:
-                if (pool.Maf >= 1 && Setting.IsMyOwnRoleeAdded == true)
-                { document.writeln (counter + " " + "Вы Уборщик" + "<br>") 
+                if (pool.Maf >= 1 && Setting.IsMyOwnRoleeAdded == true && pool.Jani < 1 || pool.God_father == 1 && Setting.IsMyOwnRoleeAdded == true && pool.Jani < 1 )
+            { 
+                document.writeln (counter + " " + "Вы Уборщик" + "<br>") 
                 counter++
+                pool.EvilSide++
+                pool.Jani++
             }
                 else if (pool.God_father == 0) {
-                    document.writeln ( counter + " " + "Вы Крестный отец"+ "<br>" );
+                document.writeln ( counter + " " + "Вы Крестный отец"+ "<br>" );
                 pool.God_father++
                 pool.Maf++
                 counter++
                 Kill++
-                }
-                else {
+                pool.EvilSide++
+            }
+                else if (pool.Maf == 0)
+            {
                 document.writeln ( counter + " " + "Вы мафиозник"+ "<br>" );
                 pool.Maf++
                 counter++
                 Kill++
-                }
+                pool.EvilSide++
+            }
                 
                 break
 
@@ -192,7 +201,7 @@ switch(pool.number)
 }// loop end
 
 
-if (pool.Maf == 0 )  
+if (pool.EvilSide == 0 )  
 {
     document.writeln ("НЕТ МАФИИ ДАВАЙ ПО НОВОЙ МИЩА");
     location.reload()
@@ -203,6 +212,6 @@ if (pool.Maf == 0 )
 
 document.writeln (" " + "<br>");
 document.writeln ("Всего мирных " + " " + pool.Vilager++ + "<br>");
-document.writeln ("Всего мафии" + " " + pool.Maf + "<br>");
+document.writeln ("Всего мафии" + " " + pool.EvilSide + "<br>");
 document.writeln ("Всего нейтралных ролей" + " " + pool.Neitrals + "<br>");
 document.writeln ("Всего роллей способных убивать ночью" + " " + Kill );
