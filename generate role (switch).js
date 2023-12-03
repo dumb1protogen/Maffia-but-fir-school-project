@@ -125,7 +125,6 @@ switch(pool.number)
             {
                 document.writeln ( counter + " " + "Вы Крестный отец"+ "<br>" );
                 pool.God_father++
-                pool.Maf++
                 counter++
                 Kill++
                 pool.EvilSide++
