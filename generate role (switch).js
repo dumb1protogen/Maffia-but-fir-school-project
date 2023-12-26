@@ -171,7 +171,7 @@ switch(pool.number)
         if (pool.Shooter < 1 && Setting.IsMyOwnRoleeAdded == true) 
         {
             //document.writeln ( counter + " " + "Вы Стрелок" + "<br>");
-            Players.push ({role:"Shooter", Number: counter, Alive: true, button: "there should be button"})
+            Players.push ({role:"стрелок", Number: counter, Alive: true, button: "there should be button"})
             pool.Shooter++
             pool.Vilager++
             counter++
@@ -183,7 +183,7 @@ switch(pool.number)
             {
                 //document.writeln ( counter + " " + "Вы Шериф" + "<br>");
                 
-                Players.push ({role:"Sherif", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Шериф", Number: counter, Alive: true, button: "there should be button"})
                 pool.Sherif++
                 pool.Vilager++
                 counter++
@@ -194,7 +194,7 @@ switch(pool.number)
             if (pool.Veteran < 1 && Setting.IsMyOwnRoleeAdded == true)
             {
                 //document.writeln ( counter + " " + "Вы Ветеран" + "<br>");
-                Players.push ({role:"Veteran", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Ветеран", Number: counter, Alive: true, button: "there should be button"})
                 pool.Veteran++
                 pool.Vilager++
                 counter++
@@ -205,7 +205,7 @@ switch(pool.number)
             if (pool.Doctor < 1)
             {
                 //document.writeln ( counter + " " + "Вы Доктор" + "<br>");
-                Players.push ({role:"Doctor", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Достор", Number: counter, Alive: true, button: "there should be button"})
                 pool.Doctor++
                 pool.Vilager++
                 counter++
@@ -214,7 +214,7 @@ switch(pool.number)
         case 6:
             if (pool.Escort < 1)
             {
-                Players.push ({role:"Escort", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Модель", Number: counter, Alive: true, button: "there should be button"})
                 pool.Escort++
                 pool.Vilager++
                 counter++
@@ -223,7 +223,7 @@ switch(pool.number)
         case 7:
             if (pool.Mayor < 1 && Setting.IsMyOwnRoleeAdded == true)
             {
-                Players.push ({role:"Myor", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Мэр", Number: counter, Alive: true, button: "there should be button"})
                 pool.Mayor++
                 pool.Vilager++
                 counter++
@@ -232,7 +232,7 @@ switch(pool.number)
         case 8:
             if (pool.Lookout < 1 && Setting.IsMyOwnRoleeAdded == true)
             {
-                Players.push ({role:"Judge", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Судья", Number: counter, Alive: true, button "there should be button"})
                 pool.Lookout++
                 pool.Vilager++
                 counter++
@@ -241,7 +241,7 @@ switch(pool.number)
         case 9:
             if (pool.Maf < 1 && pool.EvilSide < 3)
             {
-                Players.push ({role:"Maf", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Мафиозник", Number: counter, Alive: true, button: "there should be button"})
                 pool.Maf++
                 counter++
                 Kill++
@@ -251,7 +251,7 @@ switch(pool.number)
         case 10:
             if (pool.God_father < 1 && pool.EvilSide < 3 && Setting.IsMyOwnRoleeAdded == true) 
             {
-                Players.push ({role:"Godfather", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Крестный отец", Number: counter, Alive: true, button: "there should be button"})
                 pool.God_father++
                 counter++
                 Kill++
@@ -261,7 +261,7 @@ switch(pool.number)
         case 11:
             if (pool.Sk < 1 && Setting.IsNitralsInGame == true)
             {
-                Players.push ({role:"Sirial killer", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Сирийный убийца", Number: counter, Alive: true, button: "there should be button"})
                 pool.Sk++
                 pool.Neitrals
                 counter++
@@ -271,7 +271,7 @@ switch(pool.number)
          case 12:
             if (pool.Jester < 1 && Setting.IsNitralsInGame == true)
             {
-                Players.push ({role:"Jester", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Шут", Number: counter, Alive: true, button: "there should be button"})
                 pool.Jester++
                 pool.Neitrals++
                 counter++
@@ -280,7 +280,7 @@ switch(pool.number)
          case 13:
             if (pool.Surv < 1 && Setting.IsNitralsInGame == true)
             {
-                Players.push ({role:"Survivor", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Выживший", Number: counter, Alive: true, button: "there should be button"})
                 pool.Surv++
                 pool.Neitrals++
                 counter++
@@ -289,7 +289,7 @@ switch(pool.number)
          case 14:
             if (pool.amni < 1 && Setting.IsNitralsInGame == true)
             {
-                Players.push ({role:"Amnisiac", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Забытый", Number: counter, Alive: true, button: "there should be button"})
                 pool.amni++
                 pool.Neitrals++
                 counter++
@@ -298,13 +298,13 @@ switch(pool.number)
             case 15:
                 if (pool.Maf >= 1 && Setting.IsMyOwnRoleeAdded == true && pool.Jani < 1 || pool.God_father == 1 && Setting.IsMyOwnRoleeAdded == true && pool.Jani < 1 )
             { 
-                Players.push ({role:"Janitor", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Уборщик", Number: counter, Alive: true, button: "there should be button"})
                 counter++
                 pool.EvilSide++
                 pool.Jani++
             }
                 else if (pool.God_father == 0) {
-                    Players.push ({role:"Godfather", Number: counter, Alive: true, button: "there should be button"})
+                    Players.push ({role:"Крестный отец", Number: counter, Alive: true, button: "there should be button"})
                 pool.God_father++
                 pool.Maf++
                 counter++
@@ -313,7 +313,7 @@ switch(pool.number)
             }
                 else if (pool.Maf == 0)
             {
-                Players.push ({role:"Maf", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Мафиозник", Number: counter, Alive: true, button: "there should be button"})
                 pool.Maf++
                 counter++
                 Kill++
@@ -352,7 +352,7 @@ switch(pool.number)
 } */
 
 let RestartButton = document.createElement('button');
-RestartButton.textContent = 'Сгенирироать занового?';
+RestartButton.textContent = 'Сгенирироать занового? (не работает)';
 RestartButton.addEventListener('click', function() { 
     document.documentElement.innerHTML = '';
     Creating ()
