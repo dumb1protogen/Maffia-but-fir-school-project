@@ -33,7 +33,7 @@ let Players = [];
 
 let SettingPlayersAdd = document.createElement('button');
 SettingPlayersAdd.textContent = '+1';
-SettingPlayersAdd.addEventListener('click', function() { 
+SettingPlayersAdd.addEventListener('click', function(start) { 
     if (Setting.Players < 19) {
   Setting.Players ++;
   PlayersCount.textContent = 'Количесто игроков:' + " " + Setting.Players;
@@ -43,7 +43,7 @@ document.body.appendChild(SettingPlayersAdd);
 
 let SettingPlayersDeAdd = document.createElement('button');
 SettingPlayersDeAdd.textContent = '-1';
-SettingPlayersDeAdd.addEventListener('click', function() {
+SettingPlayersDeAdd.addEventListener('click', function(start) {
     if (Setting.Players > 4) {
   Setting.Players --    ;
   PlayersCount.textContent = 'Количесто игроков:' + " " + Setting.Players;
@@ -53,14 +53,14 @@ document.body.appendChild(SettingPlayersDeAdd);
 
 let PlayersCount = document.createElement('button');
 PlayersCount.textContent = 'Количесто игроков:' + " " + Setting.Players;
-PlayersCount.addEventListener('click', function() {
+PlayersCount.addEventListener('click', function(start) {
 });
 document.body.appendChild(PlayersCount);
 
 
 let SettingOwn = document.createElement('button');
 SettingOwn.textContent = 'Будут ли в игре нейтральные: Нет';
-SettingOwn.addEventListener('click', function() {
+SettingOwn.addEventListener('click', function(start) {
    if (Setting.IsMyOwnRoleeAdded == false) { 
 
     SettingOwn.textContent = 'Будут ли в игре нейтральные: Да';
@@ -77,7 +77,7 @@ document.body.appendChild(SettingOwn);
 
 let SettingNitrals = document.createElement('button');
 SettingNitrals.textContent = 'Будут ли в игре нейтральные: Нет';
-SettingNitrals.addEventListener('click', function() {
+SettingNitrals.addEventListener('click', function(start) {
    if (Setting.IsNitralsInGame == false) { 
 
     SettingNitrals.textContent = 'Будут ли в игре нейтральные: Да';
@@ -95,7 +95,7 @@ document.body.appendChild(SettingNitrals);
 
 let SettingVillager = document.createElement('button');
 SettingVillager.textContent = 'Будут ли в игре мирные: Нет';
-SettingVillager.addEventListener('click', function() {
+SettingVillager.addEventListener('click', function(start) {
    if (Setting.IsVillagerInGame == false) { 
 
     SettingVillager.textContent = 'Будут ли в игре мирные: Да';
@@ -109,27 +109,14 @@ SettingVillager.addEventListener('click', function() {
 });
 document.body.appendChild(SettingVillager);
 
-let a123 = document.createElement('button');
-a123.textContent = 'Click me';
-a123.addEventListener('click', function() {
-   if (i == 0) { 
-    a123.textContent = '0';
-    i = 1
 
-   } 
-   else {
-    a123.textContent = '1';
-    i = 0
-   }
-   // swear to god im have 0 clue what is a123 but im afraid to delite it.
-});
 
 //-----------------------SETINGS---------------
 
 
 let Start = document.createElement('button');
 Start.textContent = 'press here to start a game';
-Start.addEventListener('click', function() {
+Start.addEventListener('click', function(start) {
 
    if (Setting.IsMyOwnRoleeAdded == false && Setting.IsNitralsInGame == false && Setting.IsVillagerInGame == false && debug == 0) {
     alert("Притормози, ты выключил все настройки. Я тебе установлю 4 игрока иначе ты будешь в бесконечной петле. Не забуть в следущий раз включить что-то")
@@ -139,6 +126,7 @@ Start.addEventListener('click', function() {
    }
    else 
    Creating();
+   start.target.parentNode.removeChild(start.target); // потом подумай
 
 
 
@@ -351,26 +339,46 @@ switch(pool.number)
     location.reload()
 } */
 
-let RestartButton = document.createElement('button');
-RestartButton.textContent = 'Сгенирироать занового?';
-RestartButton.addEventListener('click', function() { 
-    document.documentElement.innerHTML = '';
-    Creating ()
-});
-document.body.appendChild(RestartButton);
 
 
 
 
+let PlayerList = document.getElementById("PlayerList");
 for (let i = 0; i < Players.length; i++) {
-    document.writeln( Players[i].role +" "+ Players[i].Number +"<br>" );
+   //let TI = (Players[i].role +" "+ Players[i].Number + "<br/>");
+   let pe = document.createElement ("div") ;
+    pe.textContent = (Players[i].role +" "+ Players[i].Number);
+    pe.style.textDecoration = "none";
+    pe.addEventListener ("click", function() {
+        pe.addEventListener ("click", function() {
+            if (this.style.textDecoration == "none") {
+            this.style.textDecoration = "line-through"
+            }
+            else 
+            this.style.textDecoration = "none";
+          }) 
+        
+    })
+    document.body.appendChild(pe);
+    let para = document.getElementsByTagName('div')[i]; 
+    para.id = 'plaeyr' + i;
+
+
+
   }
-document.writeln (" " + "<br>");
-document.writeln ("Всего мирных " + " " + pool.Vilager++ + "<br>");
-document.writeln ("Всего мафии" + " " + pool.EvilSide + "<br>");
-document.writeln ("Всего нейтралных ролей" + " " + pool.Neitrals + "<br>");
-document.writeln ("Всего роллей способных убивать ночью" + " " + Kill );
+//document.writeln (" " + "<br>");
+//document.writeln ("Всего мирных " + " " + pool.Vilager++ + "<br>");
+//document.writeln ("Всего мафии" + " " + pool.EvilSide + "<br>");
+//document.writeln ("Всего нейтралных ролей" + " " + pool.Neitrals + "<br>");
+//document.writeln ("Всего роллей способных убивать ночью" + " " + Kill );
+//                                                                            FIX BUG!!!
+// Just change later it into like role list. 
 
 }}) ;
 
 document.body.appendChild(Start);
+
+
+
+
+
