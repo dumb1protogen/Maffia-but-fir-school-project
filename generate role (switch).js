@@ -71,22 +71,22 @@ PlayersCount    .style.transform = 'translateX(-50%)';
 
 
 let SettingOwn = document.createElement('button');
-SettingOwn.textContent = 'Будут ли в игре мои роли: Нет';
+SettingOwn.textContent = 'Будут ли в игре не обычные роли: Нет';
 SettingOwn.addEventListener('click', function(start) {
    if (Setting.IsMyOwnRoleeAdded == false) { 
 
-    SettingOwn.textContent = 'Будут ли в игре мои роли: Да';
+    SettingOwn.textContent = 'Будут ли в игре не обычные роли: Да';
     Setting.IsMyOwnRoleeAdded = true;
     lemit = lemit + 5;
     console.log (lemit);
 
    } 
    else {
-    SettingOwn.textContent = 'Будут ли в игре мои роли: Нет';
+    SettingOwn.textContent = 'Будут ли в игре не обычные роли: Нет';
     Setting.IsMyOwnRoleeAdded = false;
     lemit = lemit - 5;
     if (Setting.Players > lemit) {
-    Setting.Players = Setting.Players - 7;
+    Setting.Players = Setting.Players - 5;
     PlayersCount.textContent = 'Количесто игроков:' + " " + Setting.Players;
     }
     console.log (lemit);
@@ -154,16 +154,43 @@ SettingVillager.style.top = '15%';
 
 
 //-----------------------SETINGS END ---------------
+//-------------------------role button---------------
+
+function gfp(playernumber) {
+    if (Setting.IsMyOwnRoleeAdded == true) {
+let ID = document.getElementById("player" + playernumber);
+let PromotionButton = document.createElement("button") 
+PromotionButton.textContent = "повысить мафиозника до: Крестного отца?";
+PromotionButton.style.position = "absolute";
+ PromotionButton.className = "RoleButton";
+ PromotionButton.style.left = '50%';
+ PromotionButton.style.top = '20%';
+ PromotionButton.addEventListener ('click', function(GFbutton) {
+    ID.textContent = "Крестный отец" + " " + (playernumber + 1)
+    GFbutton.target.parentNode.removeChild(GFbutton.target);
+
+ })
+document.body.appendChild(PromotionButton)
+}  
+}
 
 
-let gf = document.createElement('button');
-gf.textContent = 'Будут ли в игре мирные: Нет';
-gf.addEventListener('click', function() { 
+
+function jb(playernumber) {
+    let ID = document.getElementById("player" + playernumber);
+    let jb = document.createElement("button") 
+    jb.textContent = "повысить уборщика до: Маффиозника?";
+    jb.style.position = "absolute";
+    jb.className = "RoleButton";
+    jb.style.left = '50%';
+    jb.style.top = '23%';
+    jb.addEventListener ('click', function(GFbutton) {
+        ID.textContent = "Маффиозник" + " " + (playernumber + 1)
+        GFbutton.target.parentNode.removeChild(GFbutton.target);
     
-})
-
-
-
+     })
+    document.body.appendChild(jb)
+    }  
 
 
 
@@ -188,11 +215,14 @@ gf.addEventListener('click', function() {
 let Start = document.createElement('button');
 Start.textContent = 'press here to start a game';
 Start.addEventListener('click', function(start) {
-
     Players = [];
     document.querySelectorAll('.player').forEach(function (element) {
         element.remove();
+    });   
+     document.querySelectorAll('.RoleButton').forEach(function (element) {
+        element.remove();
     });
+    
        
 
 Creating();
@@ -250,7 +280,7 @@ switch(pool.number)
         //document.writeln ( counter + " " + "Вы Мирный" + "<br>");
         pool.Peace++
         pool.Vilager++
-        Players.push ({role:"Мирный житель", Number: counter, Alive: true, button: "there should be button"})
+        Players.push ({role:"Мирный житель", Number: counter, Alive: true, })
         console.log (Players[counter - 1].role + "" + Players[counter - 1].Number); // what is this?
         counter++
     }
@@ -259,7 +289,7 @@ switch(pool.number)
         if (pool.Shooter < 1 && Setting.IsMyOwnRoleeAdded == true) 
         {
             //document.writeln ( counter + " " + "Вы Стрелок" + "<br>");
-            Players.push ({role:"Стрелок", Number: counter, Alive: true, button: "there should be button"})
+            Players.push ({role:"Стрелок", Number: counter, Alive: true,})
             pool.Shooter++
             pool.Vilager++
             counter++
@@ -271,7 +301,7 @@ switch(pool.number)
             {
                 //document.writeln ( counter + " " + "Вы Шериф" + "<br>");
                 
-                Players.push ({role:"Шериф", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Шериф", Number: counter, Alive: true, })
                 pool.Sherif++
                 pool.Vilager++
                 counter++
@@ -282,7 +312,7 @@ switch(pool.number)
             if (pool.Veteran < 1 && Setting.IsMyOwnRoleeAdded == true)
             {
                 //document.writeln ( counter + " " + "Вы Ветеран" + "<br>");
-                Players.push ({role:"Ветеран", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Ветеран", Number: counter, Alive: true, })
                 pool.Veteran++
                 pool.Vilager++
                 counter++
@@ -293,7 +323,7 @@ switch(pool.number)
             if (pool.Doctor < 1)
             {
                 //document.writeln ( counter + " " + "Вы Доктор" + "<br>");
-                Players.push ({role:"Доктор", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Доктор", Number: counter, Alive: true, })
                 pool.Doctor++
                 pool.Vilager++
                 counter++
@@ -302,7 +332,7 @@ switch(pool.number)
         case 6:
             if (pool.Escort < 1)
             {
-                Players.push ({role:"Модель", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Модель", Number: counter, Alive: true, })
                 pool.Escort++
                 pool.Vilager++
                 counter++
@@ -311,7 +341,7 @@ switch(pool.number)
         case 7:
             if (pool.Mayor < 1 && Setting.IsMyOwnRoleeAdded == true)
             {
-                Players.push ({role:"Мэр", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Мэр", Number: counter, Alive: true, })
                 pool.Mayor++
                 pool.Vilager++
                 counter++
@@ -320,7 +350,7 @@ switch(pool.number)
         case 8:
             if (pool.Lookout < 1 && Setting.IsMyOwnRoleeAdded == true)
             {
-                Players.push ({role:"Судья", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Судья", Number: counter, Alive: true, })
                 pool.Lookout++
                 pool.Vilager++
                 counter++
@@ -329,7 +359,7 @@ switch(pool.number)
         case 9:
             if (pool.Maf < 1 && pool.EvilSide < 3)
             {
-                Players.push ({role:"Маффиозник", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Маффиозник", Number: counter, Alive: true, button: gfp})
                 pool.Maf++
                 counter++
                 Kill++
@@ -339,7 +369,7 @@ switch(pool.number)
         case 10:
             if (pool.God_father < 1 && pool.EvilSide < 3 && Setting.IsMyOwnRoleeAdded == true) 
             {
-                Players.push ({role:"Крестный отец", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Крестный отец", Number: counter, Alive: true, })
                 pool.God_father++
                 counter++
                 Kill++
@@ -349,7 +379,7 @@ switch(pool.number)
         case 11:
             if (pool.Sk < 1 && Setting.IsNitralsInGame == true)
             {
-                Players.push ({role:"Серийный убийца", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Серийный убийца", Number: counter, Alive: true,})
                 pool.Sk++
                 pool.Neitrals
                 counter++
@@ -359,7 +389,7 @@ switch(pool.number)
          case 12:
             if (pool.Jester < 1 && Setting.IsNitralsInGame == true)
             {
-                Players.push ({role:"Шут", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Шут", Number: counter, Alive: true, })
                 pool.Jester++
                 pool.Neitrals++
                 counter++
@@ -368,7 +398,7 @@ switch(pool.number)
          case 13:
             if (pool.Surv < 1 && Setting.IsNitralsInGame == true)
             {
-                Players.push ({role:"Выживший", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Выживший", Number: counter, Alive: true,})
                 pool.Surv++
                 pool.Neitrals++
                 counter++
@@ -377,22 +407,22 @@ switch(pool.number)
          case 14:
             if (pool.amni < 1 && Setting.IsNitralsInGame == true)
             {
-                Players.push ({role:"Забытый", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Забытый", Number: counter, Alive: true, })
                 pool.amni++
                 pool.Neitrals++
                 counter++
             }
             break
             case 15:
-                if (pool.Maf >= 1 && Setting.IsMyOwnRoleeAdded == true && pool.Jani < 1 || pool.God_father == 1 && Setting.IsMyOwnRoleeAdded == true && pool.Jani < 1 )
+                if (pool.Maf >= 1 && Setting.IsMyOwnRoleeAdded == true && pool.Jani < 1 || pool.God_father == 1 && Setting.IsMyOwnRoleeAdded == true && pool.Jani < 1 ) // помести с скобки условия мафия и отца 
             { 
-                Players.push ({role:"Уборщик", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Уборщик", Number: counter, Alive: true, button: jb})
                 counter++
                 pool.EvilSide++
                 pool.Jani++
             }
-                else if (pool.God_father == 0) {
-                    Players.push ({role:"Крестный отец", Number: counter, Alive: true, button: "there should be button"})
+                else if (pool.God_father == 0 && Setting.IsMyOwnRoleeAdded == true) {
+                    Players.push ({role:"Крестный отец", Number: counter, Alive: true, })
                 pool.God_father++
                 pool.Maf++
                 counter++
@@ -401,7 +431,7 @@ switch(pool.number)
             }
                 else if (pool.Maf == 0)
             {
-                Players.push ({role:"Маффиозник", Number: counter, Alive: true, button: "there should be button"})
+                Players.push ({role:"Маффиозник", Number: counter, Alive: true, button: gfp})
                 pool.Maf++
                 counter++
                 Kill++
@@ -410,14 +440,9 @@ switch(pool.number)
                 
                 break
                 default: 
-                    if (debug == 5) {
                         counter = 9999;
                         document.writeln ("Что-то пошло не так. Свяжитесь с создателем");
                         alert ("Что то пошло не так");
-                    } 
-                    else {
-                        debug++
-                    }
                     break
 
 }
@@ -450,19 +475,22 @@ for (let i = 0; i < Players.length; i++) {
     pe.style.textDecoration = "none";
     pe.style.fontSize = "30px";
     pe.addEventListener ("click", function() {
-        pe.addEventListener ("click", function() {
+    
 
             if (this.style.textDecoration == "none") {
             this.style.textDecoration = "line-through"
             }
             else 
             this.style.textDecoration = "none";
-          }) 
+          
         
     })
     document.body.appendChild(pe);
     pe.id = 'player' + i;
     pe.className = "player";
+    if (Players[i].button != undefined) {
+        Players[i].button(i)
+}
 
 
 
@@ -474,9 +502,10 @@ for (let i = 0; i < Players.length; i++) {
   }
 
 }}) ;
+document.body.appendChild(Start);
 Start.style.position = 'absolute';
    Start.style.left = '50%';
    Start.style.top = '6%';
-document.body.appendChild(Start);
+
 
 
