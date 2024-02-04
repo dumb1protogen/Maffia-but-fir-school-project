@@ -154,6 +154,8 @@ SettingVillager.style.top = '15%';
 
 
 //-----------------------SETINGS END ---------------
+
+
 //-------------------------role button---------------
 
 function gfp(playernumber) {
@@ -192,7 +194,11 @@ function jb(playernumber) {
     document.body.appendChild(jb)
     }  
 
+function AutoColor (playernumber) {
+    let ID = document.getElementById("player" + playernumber);
+    ID.style.color = "green"
 
+}
 
 
 //--------------------------ROLE BUTTONS END--------------
@@ -222,7 +228,9 @@ Start.addEventListener('click', function(start) {
      document.querySelectorAll('.RoleButton').forEach(function (element) {
         element.remove();
     });
-    
+    document.querySelectorAll('.Tut').forEach(function (element) {
+        element.remove();
+    });
        
 
 Creating();
@@ -473,6 +481,7 @@ for (let i = 0; i < Players.length; i++) {
    let pe = document.createElement ("div") ;
     pe.textContent = (Players[i].role +" "+ Players[i].Number);
     pe.style.textDecoration = "none";
+    pe.style.color = "black"
     pe.style.fontSize = "30px";
     pe.addEventListener ("click", function() {
     
@@ -485,6 +494,16 @@ for (let i = 0; i < Players.length; i++) {
           
         
     })
+    pe.addEventListener('contextmenu', function(ev) {
+        ev.preventDefault();
+        if (this.style.color == "black" && pe.style.textDecoration != "line-through" ) {
+            this.style.color = "blue"
+            }
+            else 
+            this.style.color = "black";
+
+        return false;
+    }, false);
     document.body.appendChild(pe);
     pe.id = 'player' + i;
     pe.className = "player";
@@ -506,6 +525,34 @@ document.body.appendChild(Start);
 Start.style.position = 'absolute';
    Start.style.left = '50%';
    Start.style.top = '6%';
+
+   let Turorial = document.createElement ("div")
+   
+   
+   Turorial.addEventListener ('click', function(GFbutton) {
+    GFbutton.target.parentNode.removeChild(GFbutton.target);
+ })
+ Turorial.className = "Tut"
+   document.body.appendChild(Turorial)
+   Turorial.style.position = "absolute"
+   Turorial.style.right = "5%"
+   Turorial.style.bottom = "5%"
+   Turorial.style.color = 'red'
+    const ua = navigator.userAgent;
+    if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
+        Turorial.textContent = ("ЛКМ - перечеркнуть (Игрок умер) ПКМ - Закрасить синим (под защитой) ");
+    }
+    if (
+      /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
+        ua
+      )
+    ) {
+        Turorial.textContent = ("ЛКМ - перечеркнуть (Игрок умер) ПКМ - Закрасить синим (под защитой) ");
+    }
+    Turorial.textContent = ("ЛКМ - перечеркнуть (Игрок умер) ПКМ - Закрасить синим (под защитой) ");
+  ;
+
+
 
 
 
