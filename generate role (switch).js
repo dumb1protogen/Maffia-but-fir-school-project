@@ -240,7 +240,8 @@ Creating();
 
 //---------------------Loop start------------------
 function Creating () {
-    let counter = 1
+    let counter = 1;
+    let fail = 0;
 
     pool ={
         Vilager: 0,
@@ -291,8 +292,9 @@ switch(pool.number)
         Players.push ({role:"Мирный житель", Number: counter, Alive: true, })
         console.log (Players[counter - 1].role + "" + Players[counter - 1].Number); // what is this?
         counter++
+        break; 
     }
-    break; 
+
     case 2:
         if (pool.Shooter < 1 && Setting.IsMyOwnRoleeAdded == true) 
         {
@@ -302,8 +304,9 @@ switch(pool.number)
             pool.Vilager++
             counter++
             Kill++
+            break; 
         }
-        break;
+
         case 3:
             if (pool.Sherif < 1)
             {
@@ -313,8 +316,9 @@ switch(pool.number)
                 pool.Sherif++
                 pool.Vilager++
                 counter++
+                break; 
             }
-            break
+
 
         case 4:
             if (pool.Veteran < 1 && Setting.IsMyOwnRoleeAdded == true)
@@ -325,8 +329,9 @@ switch(pool.number)
                 pool.Vilager++
                 counter++
                 Kill++
+                break; 
             }
-            break
+
         case 5:
             if (pool.Doctor < 1)
             {
@@ -335,8 +340,9 @@ switch(pool.number)
                 pool.Doctor++
                 pool.Vilager++
                 counter++
+                break; 
             }
-            break
+
         case 6:
             if (pool.Escort < 1)
             {
@@ -344,8 +350,9 @@ switch(pool.number)
                 pool.Escort++
                 pool.Vilager++
                 counter++
+                break; 
             }
-            break
+
         case 7:
             if (pool.Mayor < 1 && Setting.IsMyOwnRoleeAdded == true)
             {
@@ -353,8 +360,9 @@ switch(pool.number)
                 pool.Mayor++
                 pool.Vilager++
                 counter++
+                break; 
             }
-            break
+
         case 8:
             if (pool.Lookout < 1 && Setting.IsMyOwnRoleeAdded == true)
             {
@@ -362,8 +370,9 @@ switch(pool.number)
                 pool.Lookout++
                 pool.Vilager++
                 counter++
+                break; 
             }
-            break
+
         case 9:
             if (pool.Maf < 1 && pool.EvilSide < 3)
             {
@@ -372,8 +381,9 @@ switch(pool.number)
                 counter++
                 Kill++
                 pool.EvilSide++
+                break; 
             }
-            break
+
         case 10:
             if (pool.God_father < 1 && pool.EvilSide < 3 && Setting.IsMyOwnRoleeAdded == true) 
             {
@@ -382,8 +392,9 @@ switch(pool.number)
                 counter++
                 Kill++
                 pool.EvilSide++
+                break; 
             }
-            break
+
         case 11:
             if (pool.Sk < 1 && Setting.IsNitralsInGame == true)
             {
@@ -392,8 +403,9 @@ switch(pool.number)
                 pool.Neitrals
                 counter++
                 Kill++
+                break; 
             }
-            break
+
          case 12:
             if (pool.Jester < 1 && Setting.IsNitralsInGame == true)
             {
@@ -401,8 +413,9 @@ switch(pool.number)
                 pool.Jester++
                 pool.Neitrals++
                 counter++
+                break; 
             }
-            break
+
          case 13:
             if (pool.Surv < 1 && Setting.IsNitralsInGame == true)
             {
@@ -410,8 +423,9 @@ switch(pool.number)
                 pool.Surv++
                 pool.Neitrals++
                 counter++
+                break; 
             }
-            break
+
          case 14:
             if (pool.amni < 1 && Setting.IsNitralsInGame == true)
             {
@@ -419,8 +433,9 @@ switch(pool.number)
                 pool.amni++
                 pool.Neitrals++
                 counter++
+                break; 
             }
-            break
+
             case 15:
                 if (pool.Maf >= 1 && Setting.IsMyOwnRoleeAdded == true && pool.Jani < 1 || pool.God_father == 1 && Setting.IsMyOwnRoleeAdded == true && pool.Jani < 1 ) // помести с скобки условия мафия и отца 
             { 
@@ -428,6 +443,7 @@ switch(pool.number)
                 counter++
                 pool.EvilSide++
                 pool.Jani++
+                break; 
             }
                 else if (pool.God_father == 0 && Setting.IsMyOwnRoleeAdded == true) {
                     Players.push ({role:"Крестный отец", Number: counter, Alive: true, })
@@ -436,6 +452,7 @@ switch(pool.number)
                 counter++
                 Kill++
                 pool.EvilSide++
+                break; 
             }
                 else if (pool.Maf == 0)
             {
@@ -444,19 +461,29 @@ switch(pool.number)
                 counter++
                 Kill++
                 pool.EvilSide++
+                break; 
             }
                 
-                break
                 default: 
-                        counter = 9999;
-                        document.writeln ("Что-то пошло не так. Свяжитесь с создателем");
-                        alert ("Что то пошло не так");
+                        if (fail > 900) {
+                            console.log ("Что-то пошло не так. На всякий раз перезапусти");
+                            Players = [];
+                            counter = 99999;
+                            Creating();
+                            break;
+                            
+                        }
+                        else {
+                            fail = fail + 1;
+                            console.warn (fail)
+                        }
                     break
 
 }
 
 
 }
+
 //------------------------------------- loop end----------------------------------
 
 
@@ -540,16 +567,16 @@ Start.style.position = 'absolute';
    Turorial.style.color = 'red'
     const ua = navigator.userAgent;
     if (/(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(ua)) {
-        Turorial.textContent = ("ЛКМ - перечеркнуть (Игрок умер) ПКМ - Закрасить синим (под защитой) ");
+        Turorial.textContent = ("ЛКМ/Коснуться - перечеркнуть (Игрок умер)  ПКМ/Зажать - Закрасить синим (под защитой) ");
     }
     if (
       /Mobile|iP(hone|od)|Android|BlackBerry|IEMobile|Kindle|Silk-Accelerated|(hpw|web)OS|Opera M(obi|ini)/.test(
         ua
       )
     ) {
-        Turorial.textContent = ("ЛКМ - перечеркнуть (Игрок умер) ПКМ - Закрасить синим (под защитой) ");
+        Turorial.textContent = ("ЛКМ/Коснуться - перечеркнуть (Игрок умер)  ПКМ/Зажать - Закрасить синим (под защитой) ");
     }
-    Turorial.textContent = ("ЛКМ - перечеркнуть (Игрок умер) ПКМ - Закрасить синим (под защитой) ");
+    Turorial.textContent = ("ЛКМ/Коснуться - перечеркнуть (Игрок умер)  ПКМ/Зажать - Закрасить синим (под защитой) ");
   ;
 
 
