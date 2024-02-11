@@ -219,7 +219,7 @@ function AutoColor (playernumber) {
 
 
 let Start = document.createElement('button');
-Start.textContent = 'press here to start a game';
+Start.textContent = 'Начать игру';
 Start.addEventListener('click', function(start) {
     Players = [];
     document.querySelectorAll('.player').forEach(function (element) {
